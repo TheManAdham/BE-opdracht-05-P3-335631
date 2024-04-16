@@ -14,13 +14,24 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $products = [
+            ['name' => 'Mintnopjes', 'barcode' => '8719587231278'],
+            ['name' => 'Schoolkrijt', 'barcode' => '8719587326713'],
+            ['name' => 'Honingdrop', 'barcode' => '8719587327836'],
+            ['name' => 'Zure Beren', 'barcode' => '8719587321441'],
+            ['name' => 'Cola Flesjes', 'barcode' => '8719587321237'],
+            ['name' => 'Turtles', 'barcode' => '8719587322245'],
+            ['name' => 'Witte Muizen', 'barcode' => '8719587328256'],
+            ['name' => 'Reuzen Slangen', 'barcode' => '8719587325641'],
+            ['name' => 'Zoute Rijen', 'barcode' => '8719587322739'],
+            ['name' => 'Winegums', 'barcode' => '8719587327527'],
+            ['name' => 'Drop Munten', 'barcode' => '8719587322345'],
+            ['name' => 'Kruis Drop', 'barcode' => '8719587322265'],
+            ['name' => 'Zoute Ruitjes', 'barcode' => '8719587323256'],
+        ];
 
-        for ($i = 0; $i < 5; $i++) {
-            DB::table('products')->insert([
-                'name' => $faker->words(1, true), // Generate a 1-word product name
-                'barcode' => implode('', $faker->unique()->randomElements(range(0, 9), 10)), // Generate a unique 10-digit barcode number
-            ]);
+        foreach ($products as $product) {
+            DB::table('products')->insert($product);
         }
     }
 }
